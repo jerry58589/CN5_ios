@@ -11,11 +11,11 @@ import GoogleMaps
 class MainViewController: UIViewController {
     
     
-    var receiveData: String!
+    var loginData: String!
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        print("login_email.text = ",receiveData)
+        print("login_email.text = ",loginData)
 //        GMSServices.provideAPIKey("AIzaSyAIM29ukb0TCL5WILbWtQAfBcamupyjqnY")
 //        //建中心點
 //        let camera = GMSCameraPosition.camera(withLatitude: 24.953647, longitude:121.225745, zoom: 16)
