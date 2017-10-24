@@ -175,7 +175,7 @@
                         <outlet property="email" destination="FBe-mL-1FU" id="Ksy-rT-sbh"/>
                         <outlet property="password" destination="9sM-iB-dUL" id="bfd-Jt-0Xx"/>
                         <outlet property="snoopy" destination="i2U-rn-a40" id="3M7-Sh-WtQ"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="send_loginData" id="fBd-tS-hWZ"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="send_LoginMail_to_Main" id="iJO-1u-HsW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwv-yR-ELh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -396,23 +396,7 @@
                     <view key="view" contentMode="scaleToFill" id="IWZ-ke-U66">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CallRecord" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLU-tD-9hd">
-                                <rect key="frame" x="180" y="100" width="240" height="93"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="2Im-Ws-XXN"/>
-                                    <constraint firstAttribute="height" constant="93" id="Khy-MB-kUI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" red="0.89411764709999997" green="0.91764705879999997" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="FLU-tD-9hd" secondAttribute="centerX" id="OK6-xv-drL"/>
-                            <constraint firstItem="FLU-tD-9hd" firstAttribute="top" secondItem="QEC-CO-vAa" secondAttribute="bottom" constant="80" id="lWl-Qb-09v"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Wve-YG-p0e"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -420,7 +404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R0Q-i3-kfU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117" y="2189"/>
+            <point key="canvasLocation" x="116.8" y="2188.6056971514245"/>
         </scene>
         <!--Non Menu Controller-->
         <scene sceneID="d7w-0k-xlq">

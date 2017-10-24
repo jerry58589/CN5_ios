@@ -16,7 +16,8 @@ class FirstViewController: UIViewController {
     
     ///private var currentTextField: UITextField?
     ///private var isKeyboardShown = false
-    
+    static var super_login_mail: String!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -177,7 +178,12 @@ class FirstViewController: UIViewController {
                                         print("登入成功")
                                         
                                         ////換頁 傳值 email.text
-                                        self.performSegue(withIdentifier: "send_loginData", sender: nil)
+                                        FirstViewController.super_login_mail = self.email.text!
+                                        self.performSegue(withIdentifier: "send_LoginMail_to_Main", sender: nil)
+                                        //self.performSegue(withIdentifier: "fuck222", sender: nil)
+                                        /////不能用show 換頁會換到history
+                                        //self.shouldPerformSegue(withIdentifier: "fuck222", sender: nil)
+                                        //self.segue
                                 })
                                 alertController.addAction(okAction)
                                 
@@ -186,7 +192,6 @@ class FirstViewController: UIViewController {
                                     alertController,
                                     animated: true,
                                     completion: nil)
-                                
                             }
                             else if server_response as! String? == "login_Error"{
                                 // 建立一個提示框
@@ -210,7 +215,6 @@ class FirstViewController: UIViewController {
                                     alertController,
                                     animated: true,
                                     completion: nil)
-                                
                             }
                             else {
                                 let ErrorMessage = String(data: data, encoding: .utf8)
@@ -259,16 +263,18 @@ class FirstViewController: UIViewController {
     
     ////send email.text to MainViewCV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "send_loginData" { //sendData = Storyboard Segue id
+        if segue.identifier == "send_LoginMail_to_Main" { //sendData = Storyboard Segue id
             let mainViewController = segue.destination as! MainViewController //MainViewController = 接收的ViewController
-            //mainViewController.receiveData = "helloworld!!!!!"
             mainViewController.loginData = email.text!
+            
         }
+        
     }
 
     
     ////post
     @IBAction func post(_ sender: Any) {
+        
         let PostToServerJsonData = ["MyID": "0005"]
         //let PostToServerJsonData = ["username": "kilo_loco", "tweet": "HelloWorld"]
         //guard let url = URL(string: "http://192.168.11.4:8080/service.php") else {return}
@@ -302,6 +308,8 @@ class FirstViewController: UIViewController {
                 }
             }
         }.resume()
+ 
+        
         
     }
     
