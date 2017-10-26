@@ -11,6 +11,9 @@
 		0E75C5A61BE3CAFE00844634 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E75C5A41BE3CAFE00844634 /* Info.plist */; };
 		0EB8EBFF1BE3CF3C00BC2A99 /* CN5_ios.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E75C5A51BE3CAFE00844634 /* CN5_ios.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		900ABADA5D7791DCDA96AE92 /* libPods-CN5_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0CCCACF731BBE508B6D1E2 /* libPods-CN5_ios.a */; };
+		B909EE9E1FA0872C00993E6C /* CallRecordBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909EE9D1FA0872C00993E6C /* CallRecordBaseTableViewCell.swift */; };
+		B909EEA11FA0874400993E6C /* CallRecordDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909EE9F1FA0874400993E6C /* CallRecordDataTableViewCell.swift */; };
+		B909EEA21FA0874400993E6C /* CallRecordDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B909EEA01FA0874400993E6C /* CallRecordDataTableViewCell.xib */; };
 		B96CE2E11F41A09B00E0C27A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CE2E01F41A09B00E0C27A /* TestViewController.swift */; };
 		B96CE2E31F41AE9C00E0C27A /* Test2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96CE2E21F41AE9C00E0C27A /* Test2ViewController.swift */; };
 		B96F92251F7B874500F021DA /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96F92241F7B874500F021DA /* HistoryViewController.swift */; };
@@ -65,6 +68,9 @@
 		2C0CCCACF731BBE508B6D1E2 /* libPods-CN5_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CN5_ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		314431385544FCE97B298D55 /* Pods-CN5_ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CN5_ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CN5_ios/Pods-CN5_ios.debug.xcconfig"; sourceTree = "<group>"; };
 		644E985EFECD4C909F50CE8A /* Pods-CN5_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CN5_ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-CN5_ios/Pods-CN5_ios.release.xcconfig"; sourceTree = "<group>"; };
+		B909EE9D1FA0872C00993E6C /* CallRecordBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallRecordBaseTableViewCell.swift; sourceTree = "<group>"; };
+		B909EE9F1FA0874400993E6C /* CallRecordDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallRecordDataTableViewCell.swift; sourceTree = "<group>"; };
+		B909EEA01FA0874400993E6C /* CallRecordDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallRecordDataTableViewCell.xib; sourceTree = "<group>"; };
 		B96CE2E01F41A09B00E0C27A /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		B96CE2E21F41AE9C00E0C27A /* Test2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test2ViewController.swift; sourceTree = "<group>"; };
 		B96F92241F7B874500F021DA /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +232,9 @@
 				C5C1CE5C1A70F27500B6E411 /* BaseTableViewCell.swift */,
 				C5BF6A811BEEF1A70064C18E /* DataTableViewCell.swift */,
 				C5BF6A831BEEF1E70064C18E /* DataTableViewCell.xib */,
+				B909EE9D1FA0872C00993E6C /* CallRecordBaseTableViewCell.swift */,
+				B909EE9F1FA0874400993E6C /* CallRecordDataTableViewCell.swift */,
+				B909EEA01FA0874400993E6C /* CallRecordDataTableViewCell.xib */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -419,6 +428,7 @@
 				B9CF145D1F556771007EA58D /* Podfile in Resources */,
 				C5BF6A841BEEF1E70064C18E /* DataTableViewCell.xib in Resources */,
 				0E75C5A61BE3CAFE00844634 /* Info.plist in Resources */,
+				B909EEA21FA0874400993E6C /* CallRecordDataTableViewCell.xib in Resources */,
 				C539E64F1A315E87003B7CC7 /* Main.storyboard in Resources */,
 				C539E6541A315E87003B7CC7 /* LaunchScreen.xib in Resources */,
 				C539E6511A315E87003B7CC7 /* Images.xcassets in Resources */,
@@ -517,10 +527,12 @@
 				C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */,
 				C5BF6A821BEEF1A70064C18E /* DataTableViewCell.swift in Sources */,
 				B96CE2E11F41A09B00E0C27A /* TestViewController.swift in Sources */,
+				B909EEA11FA0874400993E6C /* CallRecordDataTableViewCell.swift in Sources */,
 				C539E6471A315E87003B7CC7 /* AppDelegate.swift in Sources */,
 				C5F179D21BEB2FAF00EEDD9A /* UIColor.swift in Sources */,
 				C5F179CE1BEB2A5900EEDD9A /* UIImage.swift in Sources */,
 				C5498C821BE8994F0076A7C5 /* UIImageView.swift in Sources */,
+				B909EE9E1FA0872C00993E6C /* CallRecordBaseTableViewCell.swift in Sources */,
 				C5C1CE5B1A70DADF00B6E411 /* NonMenuController.swift in Sources */,
 				B96F92251F7B874500F021DA /* HistoryViewController.swift in Sources */,
 				C5498C7E1BE897250076A7C5 /* ImageHeaderView.swift in Sources */,
