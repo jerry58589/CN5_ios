@@ -223,7 +223,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
             return
         }
         
-        self.delegate?.leftWillOpen?()
+        //self.delegate?.leftWillOpen?()
         
         setOpenWindowLevel()
         // for call viewWillAppear of leftViewController

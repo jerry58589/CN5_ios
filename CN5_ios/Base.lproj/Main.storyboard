@@ -302,7 +302,6 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.49019610879999997" green="0.90588241820000004" blue="0.78039222959999999" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="mMu-hX-yzr"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

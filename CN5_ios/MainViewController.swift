@@ -10,31 +10,45 @@ import GoogleMaps
 
 class MainViewController: UIViewController {
     
-    
     var loginData: String!
-    
+    var mapView: GMSMapView?
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         print("login_email.text = ",loginData)
+        
+        //google map camera
+        GMSServices.provideAPIKey("AIzaSyAIM29ukb0TCL5WILbWtQAfBcamupyjqnY")
+        let camera = GMSCameraPosition.camera(withLatitude: 25.047986, longitude: 121.517026, zoom: 8)
+        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        view = mapView
+        
+        MarkerMapByJsonData()
+        
+        //update function at 10s
+        Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.MarkerMapByJsonData), userInfo: nil, repeats: true)
 
-
+    }
+    
+    
+    @objc func MarkerMapByJsonData() {
+        
         //post
         let PostToServerJsonData = ["My_mail": loginData ,"what_did_you_need": "get_Current_position_GPS"]
-        //let PostToServerJsonData = ["username": "kilo_loco", "tweet": "HelloWorld"]
-        //guard let url = URL(string: "http://192.168.11.4:8080/service.php") else {return}
         guard let url = URL(string: "http://127.0.0.1:8080/service.php") else {return}
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         guard let httpBody = try? JSONSerialization.data(withJSONObject: PostToServerJsonData, options: []) else {return}
         request.httpBody = httpBody
-
+        
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in
             if let response = response {
                 print(response)
             }
-
+            
             if let data = data {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
@@ -42,38 +56,42 @@ class MainViewController: UIViewController {
                         print(json["lat_now"]!)
                         print(json["lng_now"]!)
                         
+                        let Strgin_lat_now:String = json["lat_now"]! as! String
+                        let Strgin_lng_now:String = json["lng_now"]! as! String
+                        
+                        let Double_lat_now:Double = Double(Strgin_lat_now)!
+                        let Double_lng_now:Double = Double(Strgin_lng_now)!
+                        
+                        DispatchQueue.main.async {  //GCD 多執行緒  若沒用 DispatchQueue 直接重新整理會gg
 
+                            self.mapView?.clear()   //清除所有標記
+                        
+                            let nextLocation = CLLocationCoordinate2DMake(Double_lat_now, Double_lng_now)
+                            
+                            //動畫 2為速度 越大越慢
+                            CATransaction.begin()
+                            CATransaction.setValue(2, forKey: kCATransactionAnimationDuration)
+                            self.mapView?.animate(to: GMSCameraPosition.camera(withLatitude: nextLocation.latitude, longitude: nextLocation.longitude, zoom: 16))
+                            CATransaction.commit()
+                            
+                            let marker = GMSMarker()
+                            marker.position = nextLocation
+                            marker.map = self.mapView
+                        }
                     }
-
-
                 } catch let error{
                     print(error.localizedDescription)
 
-
-                    /////if server response is not json or error ,print error code/////
-                    //guard let data = data else{return} ///在if let data = data 外要加
                     let ErrorMessage = String(data: data, encoding: .utf8)
                     print("//////////////////////////////////////////////////////////////////////////")
                     print(ErrorMessage!)
                 }
             }
         }.resume()
-
-        /////// google map has bug ///////
-        /////// runtime: UI API called from background thread: -[UIApplication applicationState] must be used from main thread only
-
-        GMSServices.provideAPIKey("AIzaSyAIM29ukb0TCL5WILbWtQAfBcamupyjqnY")
-        //建中心點
-        let camera = GMSCameraPosition.camera(withLatitude: 24.953647, longitude:121.225745, zoom: 16)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        view = mapView
-
-        //標記
-        let maker = GMSMarker()
-        maker.position = CLLocationCoordinate2D(latitude: 24.953647, longitude: 121.225745)
-        maker.map = mapView
         
     }
+    
+    
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -87,7 +105,6 @@ class MainViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
 
 }
 
