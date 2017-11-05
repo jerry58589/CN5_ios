@@ -47,6 +47,10 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         self.tableView.separatorColor = UIColor(red: 224/255.0, green: 224/255.0, blue: 224/255.0, alpha: 1.0)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+        self.mainViewController = UINavigationController(rootViewController: mainViewController)
+        
         let historyViewController = storyboard.instantiateViewController(withIdentifier: "HistoryViewController") as! HistoryViewController
         self.historyViewController = UINavigationController(rootViewController: historyViewController)
         

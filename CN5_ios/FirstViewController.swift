@@ -14,25 +14,35 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
-    ///private var currentTextField: UITextField?
-    ///private var isKeyboardShown = false
+    //login main
     static var super_login_mail: String!
-
+    
+    //timer
+    static var My_timer_now : Timer?
+    static var My_timer_history : Timer?
+    static var My_timer_callrecord : Timer?
+    
+    var nextViewController: UIViewController!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //navigation bar back button is nil
+        self.navigationItem.hidesBackButton = true
+        
+        //陰影
         snoopy.layer.shadowColor = UIColor.black.cgColor
         snoopy.layer.shadowOffset = CGSize(width: 5, height: 5)
         snoopy.layer.shadowOpacity = 0.7
         snoopy.layer.shadowRadius = 5
-        
-        //function auto updata by 5 sec
-        //Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.get(_:)), userInfo: nil, repeats: true)
-        //Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.post(_:)), userInfo: nil, repeats: true)
-        
-        
+
+        //預設文字（站位符）
+        email.placeholder = "EX. xxx@gmail.com"
+        password.placeholder = "password"
 
     }
+
     
 //    func textFieldDidBeginEditing(_ textField: UITextField) {
 //        currentTextField = textField
@@ -82,11 +92,7 @@ class FirstViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: Any) {
-        
-      
-        //post to server if response OK do login else error
-        // & if response ok post gps
-
+        // if email = nil
         if email.text?.isEmpty ?? true {
             let alertController = UIAlertController(
                 title: "提示",
@@ -133,11 +139,6 @@ class FirstViewController: UIViewController {
                 completion: nil)
         }
         else {
-            ////else post  if post response OK do alert,change page,send email.textw    else login again
-            
-            
-            
-            
             
             let PostToServerJsonData = ["login_mail": email.text!, "login_password": password.text!]
             //let PostToServerJsonData = ["username": "kilo_loco", "tweet": "HelloWorld"]
@@ -176,14 +177,14 @@ class FirstViewController: UIViewController {
                                     handler: {
                                         (action: UIAlertAction!) -> Void in
                                         print("登入成功")
+
+                                        let storyboard = UIStoryboard(name:"Main", bundle:nil)
                                         
-                                        ////換頁 傳值 email.text
-                                        FirstViewController.super_login_mail = self.email.text!
-                                        self.performSegue(withIdentifier: "send_LoginMail_to_Main", sender: nil)
-                                        //self.performSegue(withIdentifier: "fuck222", sender: nil)
-                                        /////不能用show 換頁會換到history
-                                        //self.shouldPerformSegue(withIdentifier: "fuck222", sender: nil)
-                                        //self.segue
+                                        let MainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                                        self.nextViewController = UINavigationController(rootViewController: MainViewController)
+                                        
+                                        self.slideMenuController()?.changeMainViewController(self.nextViewController, close: true)
+                                        
                                 })
                                 alertController.addAction(okAction)
                                 
@@ -226,7 +227,6 @@ class FirstViewController: UIViewController {
                     } catch {
                         print(error)
                         
-                        
                         /////if server response is not json or error ,print error code/////
                         //guard let data = data else{return} ///在if let data = data 外要加
                         let ErrorMessage = String(data: data, encoding: .utf8)
@@ -258,28 +258,11 @@ class FirstViewController: UIViewController {
     
     
     
-    
-    
-    
-    ////send email.text to MainViewCV
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "send_LoginMail_to_Main" { //sendData = Storyboard Segue id
-            let mainViewController = segue.destination as! MainViewController //MainViewController = 接收的ViewController
-            mainViewController.loginData = email.text!
-            
-        }
-        
-    }
-
-    
     ////post
     @IBAction func post(_ sender: Any) {
         
         let PostToServerJsonData = ["MyID": "0005"]
-        //let PostToServerJsonData = ["username": "kilo_loco", "tweet": "HelloWorld"]
-        //guard let url = URL(string: "http://192.168.11.4:8080/service.php") else {return}
         guard let url = URL(string: "http://127.0.0.1:8080/service.php") else {return}
-        //guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else {return}
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         //request.addValue("application/json", forHTTPHeaderField: "Content-Type") // 有些server加這行會GG
@@ -315,6 +298,7 @@ class FirstViewController: UIViewController {
     
     ////get
     @IBAction func get(_ sender: Any) {
+        
         let GetToServerData = "?MyID=0001"
         guard let url = URL(string: "http://127.0.0.1:8080/service.php" + GetToServerData) else { return }
         let session = URLSession.shared

@@ -11,7 +11,6 @@ import UIKit
 class CallRecordViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var tableView: UITableView!
-    //var mainContens: [String] = ["data1", "data2", "data3", "data4", "data5", "data6", "data7", "data8"]
     
     var NameText_Contens: [String] = []
     var PhoneNumberText_Contens: [String] = []
@@ -21,13 +20,6 @@ class CallRecordViewController: UIViewController , UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CallRecordDataTableViewCell.height()
     }
-    
-    // 設定是否可點選，點選後到SubContentsViewController
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        let storyboard = UIStoryboard(name: "SubContentsViewController", bundle: nil)
-    //        let subContentsVC = storyboard.instantiateViewController(withIdentifier: "SubContentsViewController") as! SubContentsViewController
-    //        self.navigationController?.pushViewController(subContentsVC, animated: true)
-    //    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.NameText_Contens.count
@@ -46,6 +38,19 @@ class CallRecordViewController: UIViewController , UITableViewDelegate, UITableV
         super.viewDidLoad()
         self.tableView.registerCellNib(CallRecordDataTableViewCell.self)
         // Do any additional setup after loading the view.
+        PostCallRecordOutputTableView()
+        
+        
+        
+
+        
+    }
+
+    @objc func PostCallRecordOutputTableView() {
+        NameText_Contens.removeAll()
+        PhoneNumberText_Contens.removeAll()
+        TimeText_Contens.removeAll()
+        IconImg_Contens.removeAll()
         
         ////post
         let PostToServerJsonData = ["My_mail": FirstViewController.super_login_mail ,"what_did_you_need": "get_CallRecord_History"]
@@ -77,21 +82,18 @@ class CallRecordViewController: UIViewController , UITableViewDelegate, UITableV
                                 let PhoneNumber =  CallRecord["PhoneNumber"]
                                 let Time =  CallRecord["Time"]
                                 
-                                
                                 print(Name!, Call_type!, PhoneNumber!, Time!)
                                 self.NameText_Contens.append(Name!)
                                 self.PhoneNumberText_Contens.append(PhoneNumber!)
                                 self.TimeText_Contens.append(Time!)
                                 self.IconImg_Contens.append(Call_type!)
-   
+                                
                             }
                             DispatchQueue.main.async {  //GCD 多執行緒
                                 self.tableView.reloadData()     //重新整理 tableView
                             }
                         }
                     }
-                    
-                    
                 } catch {
                     print(error)
                     
@@ -103,17 +105,21 @@ class CallRecordViewController: UIViewController , UITableViewDelegate, UITableV
                 }
             }
         }.resume()
-        
-        
-        
-        
-        
-        
     }
-
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem(BarTitle: "通話紀錄")
+        
+        if FirstViewController.My_timer_callrecord != nil {
+            FirstViewController.My_timer_callrecord!.invalidate()
+            FirstViewController.My_timer_callrecord = nil
+        }
+        //update function at 10s
+        
+        
+        FirstViewController.My_timer_callrecord = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.PostCallRecordOutputTableView), userInfo: nil, repeats: true)
     }
 
 }

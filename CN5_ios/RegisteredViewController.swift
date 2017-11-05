@@ -22,10 +22,18 @@ class RegisteredViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //navigation bar back button is nil
+        self.navigationItem.hidesBackButton = true
+        
         snoopy.layer.shadowColor = UIColor.black.cgColor
         snoopy.layer.shadowOffset = CGSize(width: 5, height: 5)
         snoopy.layer.shadowOpacity = 0.7
         snoopy.layer.shadowRadius = 5
+        
+        email.placeholder = "EX. xxx@gmail.com"
+        password.placeholder = "password"
+        okpassword.placeholder = "請再次輸入密碼"
+        phonenumber.placeholder = "EX. 0987654321"
         
 //        print("1")
 //        let notificationName = Notification.Name("login")
@@ -143,10 +151,5 @@ class RegisteredViewController: UIViewController {
         
         
     }
-    
-    
-    
-    
-
 
 }

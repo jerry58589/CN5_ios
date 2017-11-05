@@ -28,7 +28,11 @@ extension UIViewController {
         //self.navigationController?.navigationBar.tintColor = UIColor.red
         
         //title color
-        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(hex: "689F38")]
+        DispatchQueue.main.async {  //GCD 多執行緒  若沒用 DispatchQueue 直接重新整理會gg
+            self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(hex: "689F38")]
+        
+        }
+        
     
     }
     

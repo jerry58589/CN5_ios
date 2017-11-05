@@ -10,33 +10,25 @@ import GoogleMaps
 
 class MainViewController: UIViewController {
     
-    var loginData: String!
     var mapView: GMSMapView?
-
+ 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        print("login_email.text = ",loginData)
-        
+
         //google map camera
         GMSServices.provideAPIKey("AIzaSyAIM29ukb0TCL5WILbWtQAfBcamupyjqnY")
         let camera = GMSCameraPosition.camera(withLatitude: 25.047986, longitude: 121.517026, zoom: 8)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView?.settings.compassButton = true
         view = mapView
-        
-        MarkerMapByJsonData()
-        
-        //update function at 10s
-        Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.MarkerMapByJsonData), userInfo: nil, repeats: true)
 
     }
-    
     
     @objc func MarkerMapByJsonData() {
         
         //post
-        let PostToServerJsonData = ["My_mail": loginData ,"what_did_you_need": "get_Current_position_GPS"]
+        let PostToServerJsonData = ["My_mail": FirstViewController.super_login_mail ,"what_did_you_need": "get_Current_position_GPS"]
         guard let url = URL(string: "http://127.0.0.1:8080/service.php") else {return}
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -71,6 +63,7 @@ class MainViewController: UIViewController {
                             //動畫 2為速度 越大越慢
                             CATransaction.begin()
                             CATransaction.setValue(2, forKey: kCATransactionAnimationDuration)
+                            //change camera
                             self.mapView?.animate(to: GMSCameraPosition.camera(withLatitude: nextLocation.latitude, longitude: nextLocation.longitude, zoom: 16))
                             CATransaction.commit()
                             
@@ -100,6 +93,16 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem(BarTitle: "目前位置")
+        
+        MarkerMapByJsonData()
+        
+        //clear timer
+        if FirstViewController.My_timer_now != nil {
+            FirstViewController.My_timer_now!.invalidate()
+            FirstViewController.My_timer_now = nil
+        }
+        //update function at 10s
+        FirstViewController.My_timer_now = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.MarkerMapByJsonData), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
