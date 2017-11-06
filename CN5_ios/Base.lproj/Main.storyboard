@@ -149,24 +149,6 @@
                                     <action selector="registered:" destination="6I8-hx-9iP" eventType="touchUpInside" id="xgZ-q9-ewB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uA8-Wr-1tf">
-                                <rect key="frame" x="317" y="485" width="69" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="get"/>
-                                <connections>
-                                    <action selector="get:" destination="6I8-hx-9iP" eventType="touchUpInside" id="r5W-uv-8LL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkA-Df-5vy">
-                                <rect key="frame" x="220" y="485" width="69" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="post"/>
-                                <connections>
-                                    <action selector="post:" destination="6I8-hx-9iP" eventType="touchUpInside" id="RHa-wh-C2A"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.49019610879999997" green="0.90588241820000004" blue="0.78039222959999999" alpha="1" colorSpace="deviceRGB"/>
                     </view>
