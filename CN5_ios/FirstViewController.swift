@@ -47,41 +47,6 @@ class FirstViewController: UIViewController {
 
     }
 
-    
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        currentTextField = textField
-//    }
-//
-//    @objc func keyboardWillShow(_ note: Notification) {
-//        if isKeyboardShown {
-//            return
-//        }
-//
-//        if (currentTextField != email && currentTextField != password) { ////
-//            return
-//        }
-//        let keyboardAnimationDetail = note.userInfo as! [String: AnyObject]
-//        let duration = TimeInterval(truncating: keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey]! as! NSNumber)
-//        let keyboardFrameValue = keyboardAnimationDetail[UIKeyboardFrameBeginUserInfoKey]! as! NSValue
-//        let keyboardFrame = keyboardFrameValue.cgRectValue
-//
-//        UIView.animate(withDuration: duration, animations: { () -> Void in
-//            self.view.frame = self.view.frame.offsetBy(dx: 0, dy: -keyboardFrame.size.height)
-//        })
-//        isKeyboardShown = true
-//    }
-//
-//    @objc func keyboardWillHide(_ note: Notification) {
-//        let keyboardAnimationDetail = note.userInfo as! [String: AnyObject]
-//        let duration = TimeInterval(truncating: keyboardAnimationDetail[UIKeyboardAnimationDurationUserInfoKey]! as! NSNumber)
-//        UIView.animate(withDuration: duration, animations: { () -> Void in
-//            self.view.frame = self.view.frame.offsetBy(dx: 0, dy: -self.view.frame.origin.y)
-//        })
-//        isKeyboardShown = false
-//    }
-//
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -253,13 +218,6 @@ class FirstViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
-    //點return keyboard 收起
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
-//    }
-    
     
     
     ////post

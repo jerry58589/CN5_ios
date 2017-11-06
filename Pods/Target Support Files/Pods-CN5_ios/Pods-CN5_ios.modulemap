@@ -1,0 +1,6 @@
+framework module Pods_CN5_ios {
+  umbrella header "Pods-CN5_ios-umbrella.h"
+
+  export *
+  module * { export * }
+}
