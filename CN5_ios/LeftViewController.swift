@@ -27,6 +27,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     
     @IBOutlet weak var tableView: UITableView!
     var menus = ["目前位置", "歷史紀錄", "我的帳戶", "通話紀錄", "Test", "Test2", "NonMenu"]
+    //var menus = ["目前位置", "歷史紀錄", "我的帳戶", "通話紀錄"]
     var mainViewController: UIViewController!
     var historyViewController: UIViewController!
     var myAccountViewController: UIViewController!

@@ -177,7 +177,8 @@ class FirstViewController: UIViewController {
                                     handler: {
                                         (action: UIAlertAction!) -> Void in
                                         print("登入成功")
-
+                                        FirstViewController.super_login_mail = self.email.text
+                                        
                                         let storyboard = UIStoryboard(name:"Main", bundle:nil)
                                         
                                         let MainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
