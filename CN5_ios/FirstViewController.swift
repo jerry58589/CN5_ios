@@ -31,6 +31,10 @@ class FirstViewController: UIViewController {
         //navigation bar back button is nil
         self.navigationItem.hidesBackButton = true
         
+        //set bar title and color
+        self.title = "登入"
+        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(hex: "689F38")]
+        
         //陰影
         snoopy.layer.shadowColor = UIColor.black.cgColor
         snoopy.layer.shadowOffset = CGSize(width: 5, height: 5)
@@ -139,11 +143,10 @@ class FirstViewController: UIViewController {
                 completion: nil)
         }
         else {
-            
             let PostToServerJsonData = ["login_mail": email.text!, "login_password": password.text!]
             //let PostToServerJsonData = ["username": "kilo_loco", "tweet": "HelloWorld"]
-            //guard let url = URL(string: "http://192.168.11.4:8080/service.php") else {return}
-            guard let url = URL(string: "http://127.0.0.1:8080/service.php") else {return}
+            guard let url = URL(string: "http://192.168.11.3:8080/service.php") else {return}
+            //guard let url = URL(string: "http://127.0.0.1:8080/service.php") else {return}
             //guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else {return}
             var request = URLRequest(url: url)
             request.httpMethod = "POST"

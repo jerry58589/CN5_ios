@@ -25,6 +25,10 @@ class RegisteredViewController: UIViewController {
         //navigation bar back button is nil
         self.navigationItem.hidesBackButton = true
         
+        //set bar title and color
+        self.title = "註冊"
+        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(hex: "689F38")]
+        
         snoopy.layer.shadowColor = UIColor.black.cgColor
         snoopy.layer.shadowOffset = CGSize(width: 5, height: 5)
         snoopy.layer.shadowOpacity = 0.7

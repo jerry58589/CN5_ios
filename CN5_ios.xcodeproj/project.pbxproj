@@ -383,6 +383,7 @@
 					};
 					C539E6401A315E87003B7CC7 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 3PH3DDJ929;
 						LastSwiftMigration = 0900;
 					};
 					C539E6581A315E87003B7CC7 = {
@@ -741,10 +742,11 @@
 			baseConfigurationReference = 314431385544FCE97B298D55 /* Pods-CN5_ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3PH3DDJ929;
 				INFOPLIST_FILE = CN5_ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dekatotoro.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "mj.CN5-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -757,11 +759,12 @@
 			baseConfigurationReference = 644E985EFECD4C909F50CE8A /* Pods-CN5_ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3PH3DDJ929;
 				INFOPLIST_FILE = CN5_ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "dekatotoro.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "mj.CN5-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
