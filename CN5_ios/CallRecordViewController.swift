@@ -56,7 +56,7 @@ class CallRecordViewController: UIViewController , UITableViewDelegate, UITableV
         let PostToServerJsonData = ["My_mail": FirstViewController.super_login_mail ,"what_did_you_need": "get_CallRecord_History"]
         
         //let PostToServerJsonData = ["My_mail": FirstViewController.super_login_mail ,"what_did_you_need": "get_History_GPS"]
-        guard let url = URL(string: "http://192.168.11.3:8080/service.php") else {return}
+        guard let url = URL(string: FirstViewController.server_URL) else {return}
         //guard let url = URL(string: "http://127.0.0.1:8080/service.php") else {return}
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

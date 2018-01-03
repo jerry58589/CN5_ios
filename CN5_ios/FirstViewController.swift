@@ -22,6 +22,9 @@ class FirstViewController: UIViewController {
     static var My_timer_history : Timer?
     static var My_timer_callrecord : Timer?
     
+    //server ip
+    static let server_URL = "http://192.168.11.5:8080/service.php"
+    
     var nextViewController: UIViewController!
     
     
@@ -110,7 +113,7 @@ class FirstViewController: UIViewController {
         else {
             let PostToServerJsonData = ["login_mail": email.text!, "login_password": password.text!]
             //let PostToServerJsonData = ["username": "kilo_loco", "tweet": "HelloWorld"]
-            guard let url = URL(string: "http://192.168.11.3:8080/service.php") else {return}
+            guard let url = URL(string: FirstViewController.server_URL) else {return}
             //guard let url = URL(string: "http://127.0.0.1:8080/service.php") else {return}
             //guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else {return}
             var request = URLRequest(url: url)
